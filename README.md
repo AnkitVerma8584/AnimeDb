@@ -1,4 +1,4 @@
-# cafeburp
+# AnimeMania
 
 A new Flutter project.
 
