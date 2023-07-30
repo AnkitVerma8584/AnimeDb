@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import '../../data/local/genre_database.dart';
 import '../../models/anime.dart';
 
 class NewAnimeDetailsPage extends StatelessWidget {
@@ -17,22 +16,17 @@ class NewAnimeDetailsPage extends StatelessWidget {
         shadowColor: Colors.transparent,
         backgroundColor: Colors.transparent,
         actions: [
-          GestureDetector(
-            onTap: () async {
-              saveDogs();
-            },
-            child: Padding(
-              padding: const EdgeInsets.all(12.0),
-              child: Container(
-                width: 40,
-                height: 40,
-                decoration: BoxDecoration(
-                    color: Colors.grey.withOpacity(0.3),
-                    borderRadius: BorderRadius.circular(5)),
-                child: const Icon(
-                  CupertinoIcons.heart,
-                  color: Colors.white,
-                ),
+          Padding(
+            padding: const EdgeInsets.all(12.0),
+            child: Container(
+              width: 40,
+              height: 40,
+              decoration: BoxDecoration(
+                  color: Colors.grey.withOpacity(0.3),
+                  borderRadius: BorderRadius.circular(5)),
+              child: const Icon(
+                CupertinoIcons.heart,
+                color: Colors.white,
               ),
             ),
           )

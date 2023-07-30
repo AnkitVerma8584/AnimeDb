@@ -1,8 +1,10 @@
-const String baseUrl = "anime-db.p.rapidapi.com";
+import 'package:flutter_dotenv/flutter_dotenv.dart';
+
+String baseUrl = dotenv.env['BASE_URL']!;
 const String size = "20";
-const Map<String, String> header = {
-  "X-RapidAPI-Host": "anime-db.p.rapidapi.com",
-  "X-RapidAPI-Key": "e9d147023fmsh688c9756659d27bp131015jsncc9eb995a2e9"
+Map<String, String> header = {
+  "X-RapidAPI-Host": baseUrl,
+  "X-RapidAPI-Key": dotenv.env['API_KEY']!
 };
 
 const synopsis =
