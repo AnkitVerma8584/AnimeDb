@@ -1,6 +1,7 @@
 import 'package:cafeburp/models/anime.dart';
 import 'package:cafeburp/models/anime_meta.dart';
 import 'package:cafeburp/data/remote/constants.dart';
+import 'package:cafeburp/models/genre.dart';
 
 class AnimeList {
   final List<Anime> animes;
@@ -10,12 +11,23 @@ class AnimeList {
 }
 
 class Dummy {
+  static List<Genre> getGenreList() {
+    return [
+      const Genre(id: "Action", name: "Action"),
+      const Genre(id: "Sci-fi", name: "Sci-fi"),
+      const Genre(id: "Suspense", name: "Suspense"),
+    ];
+  }
+
   static AnimeList getAnimeList() {
     return AnimeList(animes: [
       Anime(
           id: "id1",
           title: "Naruto",
-          alternativeTitles: ["Shippuden"],
+          alternativeTitles: [
+            "Shippuden is onasi nono inoi non on oinoainfon oin oino inoianfoin aoinfinw aoinfoinoin ion ion oinfonwaoin foinn",
+            "Good nias noiasn ",
+          ],
           ranking: 1,
           genres: ["shonen", "action"],
           episodes: 700,

@@ -8,12 +8,7 @@ import '../../models/anime_meta.dart';
 import 'constants.dart';
 
 Future<List<Genre>> fetchGenres() async {
-  /* return const [
-    Genre(id: "Action", name: "Action"),
-    Genre(id: "Drama", name: "Drama"),
-    Genre(id: "Sci-fi", name: "Sci-fi"),
-    Genre(id: "Shonen", name: "Shonen")
-  ];*/
+  return Dummy.getGenreList();
   var url = Uri.https(baseUrl, '/genre');
   final response = await http.get(url, headers: header);
   if (response.statusCode == 200) {
@@ -36,8 +31,7 @@ Future<List<Genre>> fetchGenres() async {
 }
 
 Future<AnimeList> fetchAnimes({String? search, String? genre}) async {
-  //return Dummy.getAnimeList();
-  const Map<String, String> queries = {
+  Map<String, String> queries = {
     "page": "1",
     "size": size,
     "sortOrder": "asc",
@@ -59,7 +53,7 @@ Future<AnimeList> fetchAnimes({String? search, String? genre}) async {
 
     return AnimeList(animes: animes, meta: meta);
   } else {
-    //return Dummy.getAnimeList();
+    return Dummy.getAnimeList();
     switch (response.statusCode) {
       case 429:
         throw Exception('Too many requests');

@@ -1,15 +1,18 @@
+import 'package:cafeburp/models/anime_queries.dart';
 import 'package:flutter/material.dart';
 import '../../data/remote/fetch_animes.dart';
 import 'components/anime_grid_view.dart';
 
 class AnimePage extends StatelessWidget {
-  const AnimePage({super.key});
+  const AnimePage({super.key, required this.query});
+  final AnimeQuery query;
 
   @override
   Widget build(BuildContext context) {
     return Expanded(
       child: FutureBuilder(
-        future: fetchAnimes(),
+        future:
+            fetchAnimes(genre: query.selectedGenre, search: query.searchText),
         builder: (context, snapshot) {
           switch (snapshot.connectionState) {
             case ConnectionState.waiting:
@@ -20,6 +23,12 @@ class AnimePage extends StatelessWidget {
                 return Center(child: Text(error));
               }
               var itemList = snapshot.data!;
+              if (itemList.animes.isEmpty) {
+                return const Padding(
+                  padding: EdgeInsets.all(16.0),
+                  child: Text("No Results found"),
+                );
+              }
               return AnimeGridView(animes: itemList);
             default:
               return const Center(child: Text("Default"));
